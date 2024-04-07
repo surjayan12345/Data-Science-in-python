@@ -1,0 +1,936 @@
+##########################ASSIGNMENT01##########################
+1. `date`
+   - **Explanation:** Displays the current date and time.
+
+2. `cal`
+   - **Explanation:** Displays a calendar for the current month.
+
+3. `clear`
+   - **Explanation:** Clears the terminal screen.
+
+4. `pwd`
+   - **Explanation:** Prints the current working directory (full path).
+
+5. `ls`
+   - **Explanation:** Lists files and directories in the current directory.
+
+6. `ls -a`
+   - **Explanation:** Lists all files and directories, including hidden ones (those starting with `.`).
+
+7. `ls -l`
+   - **Explanation:** Lists detailed information about files and directories, including permissions, owner, size, and modification date.
+
+8. `bc`
+   - **Explanation:** Launches a simple command-line calculator.
+
+9. `cat > filename.txt`
+   - **Explanation:** Creates or overwrites a file named `filename.txt` and allows you to input text. Press `Ctrl+D` to save and exit.
+
+10. `cat filename.txt`
+    - **Explanation:** Displays the contents of the file `filename.txt`.
+
+11. `echo "Additional content" >> filename.txt`
+    - **Explanation:** Appends the text "Additional content" to the end of the file `filename.txt`.
+
+12. `ps aux`
+    - **Explanation:** Displays information about the currently running processes.
+
+13. `wc -l filename.txt`
+    - **Explanation:** Counts and displays the number of lines in the file `filename.txt`.
+
+14. `wc -w filename.txt`
+    - **Explanation:** Counts and displays the number of words in the file `filename.txt`.
+
+15. `wc -c filename.txt`
+    - **Explanation:** Counts and displays the number of characters in the file `filename.txt`.
+
+16. `mkdir dirname`
+    - **Explanation:** Creates a new directory named `dirname`.
+
+17. `cd dirname; ls -l`
+    - **Explanation:** Changes the current working directory to `dirname` and lists detailed information about files and directories in that directory.
+
+18. `pwd`
+    - **Explanation:** Prints the current working directory (full path).
+
+19. `echo "Hello world!" > f1.txt; cp f1.txt ../`
+    - **Explanation:** Creates a file `f1.txt` with the content "Hello world!" and then copies it to the parent directory (`../`).
+
+20. `rm f1.txt ../f1.txt`
+    - **Explanation:** Removes the file `f1.txt` and its copy in the parent directory.
+
+21. `cd ..`
+    - **Explanation:** Changes the current working directory to the parent directory.
+
+22. `rm -r dirname`
+    - **Explanation:** Removes the directory `dirname` and its contents recursively.
+##########################ASSIGNMENT02##########################
+### 1) Create directory D111_rollnumber, create files F1_roll and F2_roll with common and different content
+```bash
+mkdir D111_rollnumber
+cd D111_rollnumber
+cat > F1_roll
+a
+b
+c
+d
+e
+ctrl+D
+
+cat > F2_roll
+a
+b
+k
+p
+e
+ctrl+D
+```
+
+### 2) Compare the previously created two files and find the line of the first mismatch only
+```bash
+cmp F1_roll F2_roll
+```
+
+### 3) Compare the previously created two files and find all differences mentioning line numbers
+```bash
+diff -u F1_roll F2_roll
+```
+
+### 4) Compare previously created files and display common lines
+```bash
+comm F1_roll F2_roll
+```
+
+### 5) Output redirection to store word count of F1_roll to F3_roll
+```bash
+wc -w F1_roll > F3_roll
+```
+
+### 6) Input redirection to view file content by redirecting filename F3_roll
+```bash
+cat F3_roll
+```
+
+### 7) Pipe command to count the number of files in the current working directory
+```bash
+ls -1 .
+```
+
+### 8) Rename existing file F3_roll to F4_roll
+```bash
+mv F3_roll F4_roll
+```
+
+### 9) View last 4 lines of existing file F1_roll
+```bash
+tail -n 4 F1_roll
+```
+
+### 10) View first 4 lines of existing file F2_roll
+```bash
+head -n 4 F2_roll
+```
+
+### 11) Create a file ABC_rollnumber with given content
+```bash
+echo -e "This is OS Lab\nHIT CSE – Cyber Security\nPCC CS 492" > ABC_rollnumber
+```
+
+### 12) Search "OS" from previously created file ABC_rollnumber
+```bash
+grep -i "OS" ABC_rollnumber
+```
+
+### 13) Cut columns 1 and 2 of previously created file and display
+```bash
+cut -f 1,2 ABC_rollnumber
+```
+
+### 14) Sort previously created file ABC_rollnumber in ascending and descending order
+```bash
+sort ABC_rollnumber
+sort -r ABC_rollnumber
+```
+
+### 15) Run "sleep" command as a background process for 100 seconds
+```bash
+sleep 100 &
+```
+
+### 16) Kill the background running sleep command
+```bash
+pkill -f "sleep 100"
+```
+
+### 17) Create a large file ABCD_classroll containing at least 35 lines
+```bash
+for i in {1..35}; do echo "Line $i" >> ABCD_classroll; done
+```
+
+### 18) Display the previously created file ABCD_classroll one page at a time
+```bash
+less ABCD_classroll
+```
+
+### 19) Create a file AB_rollnumber, search for "HIT" ignoring cases
+```bash
+echo -e "HiT\nOther content" > AB_rollnumber
+grep -i "HIT" AB_rollnumber
+```
+
+### 20) Find files which begin with "AB" in the current working directory
+```bash
+ls -1 AB*
+```
+
+### 21) Find disk usage for ABCD_rollnumber file and view top 5 files/directories using most disk spaces
+```bash
+du -h ABCD_classroll
+du -h * | sort -rh | head -n 5
+```
+
+##########################ASSIGNMENT03##########################
+### 1) Create a file A3_rollnumber
+```bash
+touch A3_rollnumber
+```
+
+### 2) Check disk usage of the file A3_rollnumber
+```bash
+du -h A3_rollnumber
+```
+
+### 3) Check file permissions of the file A3_rollnumber
+```bash
+ls -l A3_rollnumber
+```
+
+### 4) Give all permissions to the owner/user of A3_rollnumber
+```bash
+chmod u+rwx A3_rollnumber
+```
+
+### 5) Revoke all permissions to other users for A3_rollnumber
+```bash
+chmod o-rwx A3_rollnumber
+ls -l A3_rollnumber   # To verify the changes
+```
+
+### 6) Compress the file A3_rollnumber
+```bash
+gzip A3_rollnumber
+```
+
+### 7) Decompress the file A3_rollnumber.gz
+```bash
+gzip -d A3_rollnumber.gz
+```
+
+### 8) Copy the content of A3_rollnumber to A31_rollnumber and A32_rollnumber
+```bash
+cp A3_rollnumber A31_rollnumber
+cp A3_rollnumber A32_rollnumber
+```
+
+### 9) Create an archive A_rollnumber.tar containing all three files
+```bash
+tar -cvf A_rollnumber.tar A3_rollnumber A31_rollnumber A32_rollnumber
+```
+
+### 10) Extract all files from A_rollnumber.tar
+```bash
+tar -xvf A_rollnumber.tar
+```
+
+### 11) Compress and create archive A_rollnumber.zip containing all three files
+```bash
+zip A_rollnumber.zip A3_rollnumber A31_rollnumber A32_rollnumber
+```
+
+### 12) Decompress and extract all files from A_rollnumber.zip
+```bash
+unzip A_rollnumber.zip
+```
+
+### 13) Create a directory D123_rollnumber and enter into it
+```bash
+mkdir D123_rollnumber
+cd D123_rollnumber
+```
+
+### 14) Create a file F123_rollnumber with content
+```bash
+echo "BTech" > F123_rollnumber
+echo "Other content" >> F123_rollnumber
+```
+
+### 15) Check file permissions of F123_rollnumber
+```bash
+ls -l F123_rollnumber
+```
+
+### 16) Give all permissions to group users of F123_rollnumber
+```bash
+chmod g+rwx F123_rollnumber
+```
+
+### 17) Rename F123_rollnumber to F321_rollnumber
+```bash
+mv F123_rollnumber F321_rollnumber
+```
+
+### 18) Copy F321_rollnumber to F4321_rollnumber
+```bash
+cp F321_rollnumber F4321_rollnumber
+```
+
+### 19) Search for "BTECH" in F4321_rollnumber ignoring case and mentioning line numbers
+```bash
+grep -in "BTECH" F4321_rollnumber
+```
+
+### 20) Append the number of files in the current working directory to F4321_rollnumber
+```bash
+ls -1 | wc -l >> F4321_rollnumber
+```
+
+### 21) Find all files starting with "F" in the current working directory
+```bash
+ls -l F*
+```
+
+### 22) Compress and archive F321_rollnumber and F4321_rollnumber together
+```bash
+tar -cvf ARC_rollnumber.tar F321_rollnumber F4321_rollnumber
+```
+
+### 23) Delete all files starting with "F" in the current working directory
+```bash
+rm F*
+```
+
+### 24) Check disk usage of ARC_rollnumber archive file in bytes
+```bash
+du -b ARC_rollnumber.tar
+```
+
+### 25) Unarchive ARC_rollnumber
+```bash
+tar -xvf ARC_rollnumber.tar
+```
+
+### 26) Delete the directory D123_rollnumber
+```bash
+cd ..
+rm -r D123_rollnumber
+```
+
+##########################ASSIGNMENT04##########################
+1. Display Employee Information with Today's Date
+#!/bin/bash
+
+read -p "Enter employee's name: " name
+read -p "Enter employee's date of birth (YYYY-MM-DD): " dob
+read -p "Enter employee's phone number: " phone
+read -p "Enter employee's city: " city
+
+# Get today's date
+today=$(date +"%Y-%m-%d")
+
+echo "Employee Information with Today's Date:"
+echo "Name: $name"
+echo "Date of Birth: $dob"
+echo "Phone Number: $phone"
+echo "City: $city"
+echo "Today's Date: $today"
+
+2. Calculate Percentage of Marks
+#!/bin/bash
+
+read -p "Enter total marks: " total_marks
+read -p "Enter marks obtained: " marks_obtained
+
+percentage=$(echo "scale=2; ($marks_obtained / $total_marks) * 100" | bc)
+
+echo "Percentage of marks obtained: $percentage%"
+
+3.  Perform Arithmetic Operations on Two Numbers
+#!/bin/bash
+
+read -p "Enter the first number: " num1
+read -p "Enter the second number: " num2
+
+addition=$((num1 + num2))
+subtraction=$((num1 - num2))
+multiplication=$((num1 * num2))
+division=$(echo "scale=2; $num1 / $num2" | bc)
+remainder=$((num1 % num2))
+
+echo "Results of Arithmetic Operations:"
+echo "Addition: $addition"
+echo "Subtraction: $subtraction"
+echo "Multiplication: $multiplication"
+echo "Division: $division"
+echo "Remainder: $remainder"
+
+4.  Swap Two Numbers without Using a Third Variable
+#!/bin/bash
+
+read -p "Enter the first number: " num1
+read -p "Enter the second number: " num2
+
+echo "Before swapping: num1 = $num1, num2 = $num2"
+
+num1=$((num1 + num2))
+num2=$((num1 - num2))
+num1=$((num1 - num2))
+
+echo "After swapping: num1 = $num1, num2 = $num2"
+
+5. Convert Temperature from Celsius to Fahrenheit
+#!/bin/bash
+
+read -p "Enter temperature in Celsius: " celsius
+
+fahrenheit=$(echo "scale=2; ($celsius * 9/5) + 32" | bc)
+
+echo "Temperature in Fahrenheit: $fahrenheit°F"
+
+##########################ASSIGNMENT05##########################
+1. Power of a Number
+#!/bin/bash
+
+read -p "Enter the base: " base
+read -p "Enter the exponent: " exponent
+
+result=1
+
+while [ $exponent -gt 0 ]; do
+    result=$((result * base))
+    exponent=$((exponent - 1))
+done
+
+echo "Power of $base raised to $exponent is: $result"
+
+2. Convert Days into Years, Weeks, and Days
+#!/bin/bash
+
+read -p "Enter the number of days: " total_days
+
+years=$((total_days / 365))
+remaining_days=$((total_days % 365))
+weeks=$((remaining_days / 7))
+days=$((remaining_days % 7))
+
+echo "$total_days days is equal to: "
+echo "Years: $years"
+echo "Weeks: $weeks"
+echo "Days: $days"
+
+3.  Check if Entered Number is Odd or Even
+#!/bin/bash
+
+read -p "Enter a number: " number
+
+if [ $((number % 2)) -eq 0 ]; then
+    echo "$number is even."
+else
+    echo "$number is odd."
+fi
+
+4.  Compare Two Numbers
+#!/bin/bash
+
+read -p "Enter the first number: " num1
+read -p "Enter the second number: " num2
+
+if [ $num1 -eq $num2 ]; then
+    echo "Both numbers are equal."
+elif [ $num1 -gt $num2 ]; then
+    echo "$num1 is greater than $num2."
+else
+    echo "$num1 is less than $num2."
+fi
+
+5.  Check the Largest Number Among Three
+#!/bin/bash
+
+read -p "Enter the first number: " num1
+read -p "Enter the second number: " num2
+read -p "Enter the third number: " num3
+
+largest=$num1
+
+if [ $num2 -gt $largest ]; then
+    largest=$num2
+fi
+
+if [ $num3 -gt $largest ]; then
+    largest=$num3
+fi
+
+echo "The largest number is: $largest"
+
+##########################ASSIGNMENT06##########################
+1.Simple Calculator
+#!/bin/bash
+
+echo "Simple Calculator"
+echo "1. Addition"
+echo "2. Subtraction"
+echo "3. Multiplication"
+echo "4. Division"
+
+read -p "Enter your choice (1-4): " choice
+
+read -p "Enter first number: " num1
+read -p "Enter second number: " num2
+
+case $choice in
+    1) result=$((num1 + num2));;
+    2) result=$((num1 - num2));;
+    3) result=$((num1 * num2));;
+    4) result=$(echo "scale=2; $num1 / $num2" | bc);;
+    *) echo "Invalid choice"; exit 1;;
+esac
+
+echo "Result: $result"
+
+2.Subject Marks and Result
+#!/bin/bash
+
+read -p "Enter marks for Operating System (out of 100): " os
+read -p "Enter marks for Cloud Computing (out of 100): " cloud
+read -p "Enter marks for Data Mining (out of 100): " data
+
+total_marks=$((os + cloud + data))
+percentage=$((total_marks / 3))
+
+echo "Total Marks: $total_marks"
+echo "Percentage: $percentage%"
+
+if [ $percentage -ge 50 ]; then
+    echo "Result: Passed"
+elif [ $percentage -ge 40 ] && [ $percentage -lt 50 ]; then
+    echo "Result: Result withhold. Appear for improvement exam."
+else
+    echo "Result: Failed"
+fi
+
+3.Character Type
+#!/bin/bash
+
+read -p "Enter a character: " char
+
+if [[ $char =~ [0-9] ]]; then
+    echo "Digit"
+elif [[ $char =~ [[:upper:]] ]]; then
+    echo "Upper case character"
+elif [[ $char =~ [[:lower:]] ]]; then
+    echo "Lower case character"
+else
+    echo "Special symbol"
+fi
+
+
+4.Vowel or Consonant
+#!/bin/bash
+
+read -p "Enter an alphabet: " char
+
+case $char in
+    [aeiouAEIOU]) echo "Vowel";;
+    [a-zA-Z]) echo "Consonant";;
+    *) echo "Invalid input";;
+esac
+
+
+5. Denominations Count
+#!/bin/bash
+
+read -p "Enter the amount: " amount
+
+denominations=(2000 500 200 100 50 20 10 5 1)
+
+for denom in "${denominations[@]}"; do
+    count=$((amount / denom))
+    amount=$((amount % denom))
+    echo "$denom : $count"
+done
+
+##########################ASSIGNMENT07##########################
+1. Check the Number of Digits
+#!/bin/bash
+
+read -p "Enter a number: " number
+
+digit_count=${#number}
+
+if [ $digit_count -eq 1 ]; then
+    echo "Single digit number"
+elif [ $digit_count -eq 2 ]; then
+    echo "Two digit number"
+elif [ $digit_count -eq 3 ]; then
+    echo "Three digit number"
+else
+    echo "More than three digit number"
+fi
+
+2. Sum of First n Natural Numbers
+#!/bin/bash
+
+read -p "Enter a positive integer (n): " n
+
+sum=0
+for ((i=1; i<=n; i++)); do
+    sum=$((sum + i))
+done
+
+echo "Sum of first $n natural numbers: $sum"
+
+
+3. Sum of Digits of a Number
+#!/bin/bash
+
+read -p "Enter a number: " number
+
+sum=0
+while [ $number -gt 0 ]; do
+    digit=$((number % 10))
+    sum=$((sum + digit))
+    number=$((number / 10))
+done
+
+echo "Sum of digits: $sum"
+
+
+4. Reverse a Number
+#!/bin/bash
+
+read -p "Enter a number: " number
+
+reverse=0
+while [ $number -gt 0 ]; do
+    digit=$((number % 10))
+    reverse=$((reverse * 10 + digit))
+    number=$((number / 10))
+done
+
+echo "Reversed number: $reverse"
+
+
+5. Fibonacci Series
+#!/bin/bash
+
+read -p "Enter the number of terms for Fibonacci series: " n
+
+a=0
+b=1
+
+echo "Fibonacci series up to $n terms:"
+for ((i=1; i<=n; i++)); do
+    echo -n "$a "
+    c=$((a + b))
+    a=$b
+    b=$c
+done
+echo
+
+##########################ASSIGNMENT08##########################
+1. Factorial of a Number
+#!/bin/bash
+
+read -p "Enter a number: " num
+
+factorial=1
+for ((i=1; i<=num; i++)); do
+    factorial=$((factorial * i))
+done
+
+echo "Factorial of $num: $factorial"
+
+2. GCD of Two Numbers
+#!/bin/bash
+
+read -p "Enter first number: " num1
+read -p "Enter second number: " num2
+
+while [ $num2 -ne 0 ]; do
+    remainder=$((num1 % num2))
+    num1=$num2
+    num2=$remainder
+done
+
+echo "GCD: $num1"
+
+3. Display Pattern - Triangle
+#!/bin/bash
+
+read -p "Enter the number of lines: " n
+
+for ((i=1; i<=n; i++)); do
+    for ((j=1; j<=i; j++)); do
+        echo -n "*"
+    done
+    echo
+done
+
+4. Display Pattern - Inverted Triangle
+#!/bin/bash
+
+read -p "Enter the number of lines: " n
+
+for ((i=n; i>=1; i--)); do
+    for ((j=1; j<=i; j++)); do
+        echo -n "$j"
+    done
+    echo
+done
+
+5. Summation of Series
+#!/bin/bash
+
+read -p "Enter the value of n: " n
+read -p "Enter the value of c: " c
+
+sum=0
+for ((i=1; i<=n; i++)); do
+    term=$((i * c))
+    sum=$((sum + term))
+done
+
+echo "Summation result: $sum"
+
+6.Alternating Sum Series
+#!/bin/bash
+
+read -p "Enter the value of n: " n
+
+sum=0
+for ((i=1; i<=n; i++)); do
+    term=$((i * (2 * ((i % 2) - 1) + 1)))
+    sum=$((sum + term))
+done
+
+echo "Summation result: $sum"
+
+7. Print Alternative Digits
+#!/bin/bash
+
+read -p "Enter a number: " num
+
+echo "Alternative digits of the number starting from the first position:"
+len=${#num}
+for ((i=0; i<len; i+=2)); do
+    echo -n "${num:$i:1} "
+done
+echo
+
+##########################ASSIGNMENT09##########################
+1. Display Elements of an Array
+#!/bin/bash
+
+# Read array elements from user input
+read -p "Enter the elements of the array (space-separated): " -a my_array
+
+# Display array elements
+echo "Array elements:"
+for element in "${my_array[@]}"; do
+    echo "$element"
+done
+
+
+2. Reverse Elements of an Array
+#!/bin/bash
+
+# Read array elements from user input
+read -p "Enter the elements of the array (space-separated): " -a my_array
+
+# Reverse array elements
+reversed_array=()
+for ((i=${#my_array[@]}-1; i>=0; i--)); do
+    reversed_array+=("${my_array[i]}")
+done
+
+# Display reversed array elements
+echo "Reversed array elements:"
+for element in "${reversed_array[@]}"; do
+    echo "$element"
+done
+
+
+3. Find Maximum and Minimum Element of an Array
+#!/bin/bash
+
+# Read array elements from user input
+read -p "Enter the elements of the array (space-separated): " -a my_array
+
+# Find maximum and minimum elements
+max=${my_array[0]}
+min=${my_array[0]}
+
+for element in "${my_array[@]}"; do
+    if ((element > max)); then
+        max=$element
+    fi
+    if ((element < min)); then
+        min=$element
+    fi
+done
+
+echo "Maximum element: $max"
+echo "Minimum element: $min"
+
+
+4. Linear Search in an Array
+#!/bin/bash
+
+# Read array elements from user input
+read -p "Enter the elements of the array (space-separated): " -a my_array
+
+# Read the element to be searched
+read -p "Enter the element to be searched: " search_element
+
+# Perform linear search
+found=0
+for element in "${my_array[@]}"; do
+    if [ "$element" == "$search_element" ]; then
+        found=1
+        break
+    fi
+done
+
+if [ $found -eq 1 ]; then
+    echo "Element $search_element found in the array."
+else
+    echo "Element $search_element not found in the array."
+fi
+
+
+5. Binary Search in an Array (assuming the array is sorted)
+#!/bin/bash
+
+# Read array elements from user input
+read -p "Enter the elements of the sorted array (space-separated): " -a my_array
+
+# Read the element to be searched
+read -p "Enter the element to be searched: " search_element
+
+# Perform binary search
+low=0
+high=$(( ${#my_array[@]} - 1 ))
+found=0
+
+while [ $low -le $high ]; do
+    mid=$(( ($low + $high) / 2 ))
+    if [ "${my_array[mid]}" == "$search_element" ]; then
+        found=1
+        break
+    elif [ "${my_array[mid]}" -lt "$search_element" ]; then
+        low=$((mid + 1))
+    else
+        high=$((mid - 1))
+    fi
+done
+
+if [ $found -eq 1 ]; then
+    echo "Element $search_element found in the array."
+else
+    echo "Element $search_element not found in the array."
+fi
+
+
+6. Concatenate Strings and Find Length
+#!/bin/bash
+
+# Read two strings from user input
+read -p "Enter the first string: " str1
+read -p "Enter the second string: " str2
+
+# Concatenate strings
+result="$str1$str2"
+
+# Display concatenated string and its length
+echo "Concatenated string: $result"
+echo "Length of concatenated string: ${#result}"
+
+##########################ASSIGNMENT10##########################
+1. Signal Handler for SIGINT
+#include <stdio.h>
+#include <signal.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+void sigintHandler(int signum) {
+    printf("Caught SIGINT signal (%d)\nexitting...\n", signum);
+    exit(signum);
+}
+
+int main() {
+    // Register the signal handler for SIGINT
+    signal(SIGINT, sigintHandler);
+
+    printf("Press Ctrl+C to trigger the SIGINT signal...\n");
+
+    // Infinite loop to keep the program running
+    while (1) {
+        sleep(1);
+    }
+
+    return 0;
+}
+
+2. Sending SIGUSR1 Signal to Itself
+#include <stdio.h>
+#include <signal.h>
+#include <unistd.h>
+
+void sigusr1_handler(int signo) {
+    if (signo == SIGUSR1) {
+        printf("Received SIGUSR1 signal.\n");
+        // You can perform additional actions here.
+    }
+}
+
+int main() {
+    // Register the signal handler for SIGUSR1
+    signal(SIGUSR1, sigusr1_handler);
+
+    // Send SIGUSR1 signal to itself using kill()
+    printf("Sending SIGUSR1 signal to itself...\n");
+    kill(getpid(), SIGUSR1);
+
+    // Your main program logic goes here
+
+    return 0;
+}
+
+3. Raising and Handling SIGALRM Signal
+#include <stdio.h>
+#include <signal.h>
+#include <unistd.h>
+
+void sigalrm_handler(int signo) {
+    if (signo == SIGALRM) {
+        printf("Received SIGALRM signal.\n");
+        // You can perform additional actions here.
+    }
+}
+
+int main() {
+    // Register the signal handler for SIGALRM
+    signal(SIGALRM, sigalrm_handler);
+
+    // Set an alarm for 5 seconds
+    alarm(5);
+
+    // Your main program logic goes here
+
+    // Infinite loop to keep the program running
+    while (1) {
+        // Your main program logic goes here
+    }
+
+    return 0;
+}
+
